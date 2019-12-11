@@ -3,13 +3,7 @@ pipeline {
   
   stages {
 
-	  stage('Clone') {
-		steps{
 
-	echo 'echo'
-	  }
-
-	  }
     stage('Build') {
 	steps {
 
