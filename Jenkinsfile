@@ -1,26 +1,38 @@
-#!/usr/bin/env groovy
-
 pipeline {
+    agent any
+  
+  stages {
 
-    agent {
-        docker {
-            image 'node'
-            args '-u root'
-        }
-    }
+	  stage('Clone') {
 
-    stages {
-        stage('Build') {
+		 sh 'git clone https://github.com/TechDevProNBS/PRIDE-Server-AchievementsSpringboot.git'
+	  }
+
+		 
+    stage('Build') {
+	steps {
+		
+		sh 'mvn package -DskipTests'
+		sh 'docker build --tag "Pride:latest"'
+		echo "Build successful"
+	           }
+	 }
+
+
+
+	stage ('Test') {
+	   steps {
+		   echo "Test has passed"
+		
+	          }
+			}
+          
+		stage('Deploy') {
             steps {
-                echo 'Building...'
-                sh 'npm install'
+				echo "Deployment has been deployed"
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-                sh 'npm test'
-            }
-        }
-    }
-}
+
+
+		}
+	   }   
