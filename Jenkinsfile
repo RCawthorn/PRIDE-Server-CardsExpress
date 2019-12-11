@@ -6,7 +6,7 @@ pipeline {
 	  stage('Clone') {
 		steps{
 
-		 sh 'git clone https://github.com/TechDevProNBS/PRIDE-Server-CardsExpress.git .'
+	echo 'echo'
 	  }
 
 	  }
